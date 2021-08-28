@@ -1,39 +1,33 @@
 <template>
   <div class="inputCard">
     <h3>ADD TODO</h3>
-    <input type="text" id="inputTodo" v-model="newTodo"/>
+    <input type="text" id="inputTodo" v-model="newTodo" />
     <button id="addBtn" v-on:click="getData">ADD TODO</button>
   </div>
 </template>
 
-
-
 <script>
 export default {
   name: "getTodo",
-  data(){
-      return {
-          newTodo : null,
-          obj:{},
-          id:0
-      }
+  data() {
+    return {
+      newTodo: null,
+      obj: {},
+      id: 0,
+    };
   },
-  props:[
-      'inputTodo'
-  ],
-  methods:{
-      getData(){
+  methods: {
+    getData() {
+      if (this.newTodo === null) alert("Please Enter Todo");
+      else {
+        this.obj = { id: this.id++, todo: this.newTodo };
+        this.newTodo = "";
 
-          if(this.newTodo===null) alert("Please Enter Todo")
-          else{
-          this.obj={id:this.id++,todo:this.newTodo}
-          this.inputTodo.push(this.obj)
-          this.newTodo="";
-          this.$emit("eventName",this.inputTodo)
-        localStorage.setItem("Todos",JSON.stringify(this.inputTodo))        
-          }
+        // commit new todo to store
+        this.$store.commit("getData", this.obj);
       }
-  }
+    },
+  },
 };
 </script>
 
@@ -41,11 +35,7 @@ export default {
 
 <style>
 .inputCard {
-  background: linear-gradient(
-    to right,
-    #89fffd,
-    #ef32d9
-  ); 
+  background: linear-gradient(to right, #89fffd, #ef32d9);
   height: 200px;
   width: 35%;
   margin: 100px auto;
@@ -85,18 +75,18 @@ h3 {
   cursor: pointer;
   text-align: center;
 }
-#addBtn:hover{
-    color: #fff;
-    background-color: #157347;
-    border-color: #146c43;
+#addBtn:hover {
+  color: #fff;
+  background-color: #157347;
+  border-color: #146c43;
 }
-@media screen and (max-width:775px){
+@media screen and (max-width: 775px) {
   .inputCard {
     width: 100%;
-    margin: 20px 0 ;
+    margin: 20px 0;
     height: 250px;
   }
-  #app{
+  #app {
     width: 100%;
   }
 }

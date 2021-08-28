@@ -1,32 +1,26 @@
 <template>
-<div>
-  <div v-for="eachTodo in inputTodo" v-bind:key="eachTodo.id">
-        <singleTodo v-bind:eachTodo="eachTodo" v-on:passIdTodel="delTodo($event)"/>
-  </div>
+  <div>
+    <div v-for="eachTodo in inputTodoData" v-bind:key="eachTodo.id">
+      <singleTodo v-bind:eachTodo="eachTodo" />
+    </div>
   </div>
 </template>
 
 <script>
-import singleTodo from "./singleTodo.vue"
+import singleTodo from "./singleTodo.vue";
 export default {
-    name:'todos',
-    components: {
-        singleTodo
+  name: "todos",
+  components: {
+    singleTodo,
+  },
+  computed: {
+    inputTodoData() {
+      // Geting Data from Store
+      return this.$store.state.inputTodo;
     },
-    props:[
-      'inputTodo'
-    ],
-    data(){
-      return {i:0}
-    },
-    methods:{
-       delTodo(id){
-    this.$emit("delTodo",id)
-       }
-    }
-}
+  },
+};
 </script>
 
 <style>
-
 </style>

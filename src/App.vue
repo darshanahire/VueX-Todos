@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-
     <navbar />
     <router-view></router-view>
   </div>
@@ -11,7 +10,7 @@ import navbar from "./components/navbar.vue";
 export default {
   name: "app",
   components: {
-    navbar
+    navbar,
   },
 };
 </script>
@@ -25,8 +24,8 @@ export default {
   color: #2c3e50;
   margin: 0;
 }
-@media screen and (max-width:775px){
-  #app{
+@media screen and (max-width: 775px) {
+  #app {
     width: 100%;
   }
 }

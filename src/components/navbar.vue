@@ -1,7 +1,7 @@
 <template>
   <div id="navbar">
   <ul class="nav-links">
-      <li> <router-link class="links" to="/home"> VueTodos </router-link></li>
+      <li> <router-link class="links" to="/"> VueTodos </router-link></li>
       <li> <router-link class="links" to="/adviser"> Advicer </router-link></li>
       <li> <router-link class="links" to="/about"> About </router-link></li>
   </ul>
